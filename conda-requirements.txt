@@ -5,7 +5,7 @@ ca-certificates=2021.5.25=hecd8cb5_1
 certifi=2021.5.30=py39hecd8cb5_0
 click=8.0.1=pyhd3eb1b0_0
 flask=1.1.2=pyhd3eb1b0_0
-gunicorn=20.1.0=py39hecd8cb5_0
+gunicorn=20.1.0
 importlib-metadata=3.10.0=py39hecd8cb5_0
 itsdangerous=2.0.1=pyhd3eb1b0_0
 jinja2=3.0.0=pyhd3eb1b0_0
