@@ -1,8 +1,15 @@
 click==7.1.2
 Flask==1.1.4
+Flask-SQLAlchemy==2.5.1
+greenlet==1.1.0
 gunicorn==19.10.0
 Hamlish-Jinja==0.3.3
+importlib-metadata==4.6.1
 itsdangerous==1.1.0
 Jinja2==2.11.3
 MarkupSafe==1.1.1
+psycopg2==2.9.1
+SQLAlchemy==1.4.20
+typing-extensions==3.10.0.0
 Werkzeug==1.0.1
+zipp==3.5.0
