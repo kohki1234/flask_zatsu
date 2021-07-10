@@ -1,7 +1,13 @@
 <html>
 <body>
-  <h1>Hello world</h1>
+  <h1>Main Page</h1>
   <hr>
-  <div>{{username}}</div>
+  <div>{% for entry in entries %}
+    <li> {{entry.title}}</li>
+    <li> {{entry.body}}</li>
+    <hr>
+    {% endfor %}
+  </div>
+  <!-- <div>{{username}}</div> -->
 </body>
 </html>
