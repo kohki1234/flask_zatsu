@@ -14,9 +14,9 @@ app.secret_key = '9q9QpZQl8ooW'
 
 
 # auth0 setting
-AUTH0_CLIENT_ID = '7RSzHhkW2VMfc4cMeLgMOC4EwMnO7AmQ'
-AUTH0_CLIENT_SECRET = 'VXjFxyrPBDYD4x3NgI6dHDX_AajKR6mjOTztuzCtxI9XyBh0r3jKuYWSwDy8pO1b'
-AUTH0_DOMAIN = 'dev-dicd2g8s.jp.auth0.com'
+AUTH0_CLIENT_ID = 'XX'
+AUTH0_CLIENT_SECRET = 'XX'
+AUTH0_DOMAIN = 'XX'
 
 
 oauth = flask_oauthlib.client.OAuth(app)
