@@ -14,9 +14,9 @@ app.secret_key = '9q9QpZQl8ooW'
 
 
 # auth0 setting
-AUTH0_CLIENT_ID = 'XX'
-AUTH0_CLIENT_SECRET = 'XX'
-AUTH0_DOMAIN = 'XX'
+AUTH0_CLIENT_ID = os.getenv('AUTH0_CLIENT_ID')
+AUTH0_CLIENT_SECRET = os.getenv('AUTH0_CLIENT_SECRET')
+AUTH0_DOMAIN = os.getenv('AUTH0_DOMAIN')
 
 
 oauth = flask_oauthlib.client.OAuth(app)
@@ -47,10 +47,17 @@ class Entry(db.Model):
     body = db.Column(db.String(), nullable=False) 
 
 @app.route('/')
-def hello_world():
-    entries = Entry.query.all()
-    return render_template('index.html', entries=entries)
+def return_main():
+    return render_template('main.html')
 
+@app.route('/main')
+def hello_world():
+    if 'profile' not in flask.session:
+        return flask.redirect(flask.url_for('login'))
+    
+    else:
+        entries = Entry.query.all()
+        return render_template('index.html', entries=entries)
 
 @app.route('/login')
 def login():
@@ -96,7 +103,7 @@ def logout():
 
 
     # Auth0にも伝える
-    params = {'returnTo': flask.url_for('index', _external=True), 'client_id': AUTH0_CLIENT_ID}
+    params = {'returnTo': flask.url_for('hello_world', _external=True), 'client_id': AUTH0_CLIENT_ID}
     return flask.redirect(auth0.base_url + '/v2/logout?' + urllib.parse.urlencode(params))
 
 
@@ -112,7 +119,10 @@ def mypage():
         ID: <b>{id}</b><br>
         <br>
         <a href="/">back to top</a>
+        <br>
+        <a href="/logout">logout</a>
     '''.format(**flask.session['profile'])
+
 @app.route('/add')
 def add_comment():
     entries = Entry.query.all()
