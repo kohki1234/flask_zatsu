@@ -36,7 +36,9 @@ auth0 = oauth.remote_app(
 
 # database connection settings
 database_url = str(os.environ.get('DATABASE_URL'))
-db_uri = "postgresql://localhost/flasknote" or database_url.replace("://", "ql://", 1) 
+db_uri = database_url.replace("://", "ql://", 1) 
+
+# db_uri =  "postgresql://localhost/flasknote" # when testing locally
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 db = SQLAlchemy(app) 
 
@@ -91,6 +93,7 @@ def auth_callback():
         'name': payload['name'],
         'picture': payload['picture'],
     }
+    print(payload)
 
 
     # マイページに飛ばす。
@@ -119,7 +122,6 @@ def mypage():
         ID: <b>{id}</b><br>
         <br>
         <a href="/">back to top</a>
-        <br>
         <a href="/logout">logout</a>
     '''.format(**flask.session['profile'])
 
